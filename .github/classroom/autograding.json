@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "vrptw reader",
+      "setup": "sudo apt install python3-pytest python3-numpy",
+      "run": "python -m pytest -k vrptw_reader_test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "distance matrix",
+      "setup": "sudo apt install python3-pytest python3-numpy",
+      "run": "python -m pytest -k distance_matrix_test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "polar coordinates",
+      "setup": "sudo apt install python3-pytest python3-numpy",
+      "run": "python -m pytest -k polar_coordinates_test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "vrp solver",
+      "setup": "sudo apt install python3-pytest python3-numpy",
+      "run": "python -m pytest -k vrp_solver_test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    }
+  ]
+}
