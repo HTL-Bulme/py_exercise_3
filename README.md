@@ -1,7 +1,23 @@
-# Python Exercise 5 - Modules, Documentation, Algorithms 
+# Python Exercise 3 - Functions
 
 All required files are already included in this repository.
 Your submissions will automatically be graded when pushed.
+
+This homework is the first homework to be solved in teams of two students
+using pair programming. Your may chose your partner yourself.
+
+Note that you have to create the files containing your solutions by yourself.
+Start each of your files by adding a shebang in the first line.
+Right after the shebang, each of your files must contain each contributing
+student's name using the following template
+
+"""
+.. moduleauthor:: First Student Name <your.name@example.com>
+.. moduleauthor:: Second Student Name <other.name@example.com>
+"""
+
+We did not discuss every detail required to solve the following tasks.
+Use your favorite search engine and some common sense to solve the tasks.
 
 You may run the grader locally upfront via
 
@@ -12,95 +28,124 @@ python -m pytest [--help]
 If desired, the "old style" grader can also be accessed via
 
 ```
-python exercise_5.py [--help]
+python exercise_3.py [--help]
 ```
 
-This homework is to be prepared in teams. Properly document the files you hand
-in to receive full credit. Each module (file) and function needs a docstring.
-The purpose of each function needs to be summarized as a single sentence and
-then, if required, your intent and the behavior of the function can be
-described in more detail.
+## 1. Equation solver
+Write a function `quadratic(a, b, c)` that solves quadratic equations.
+If you have trouble solving this task, have a look at the
+[Python functions video tutorial](http://www.youtube.com/watch?v=TFcUGSBTA78)
+on youtube. In addition to what is shown in the video, the function must be
+able to deal with input leading to complex numbers as results.
 
-Furthermore, provide doctests for all functions but `main()`. Each of the
-modules needs to include a `main()` function which calls the other functions
-and prints appropriate output to `stdout`.
-`main()` itself must be called by the ifmain pattern at the end of the file.
+Name the program file: `equations.py`
 
+## 2. Sum
+Write a function `sum_to(num)` that takes an integer `num >= 0` as sole
+argument. The function should return the sum of all positive integers <= num.
+In the function, assert that the input is >= 0 by using `assert`.
 
-## 1. Reading VRPTW instances (2 points)
-Input files for vehicle routing problems generally include a depot and some
-customers. Both the depot and the customers are referred to as nodes. Storing
-vrptw instances as JSON files makes the meaning of the data easier to
-understand and eases the task of parsing such files. Have a look at one
-possible example: [r101.json](R101.json).
+Name the program file: `addition.py`
 
-Implement a function `read_json(filename: str)` that takes the name of a
-[JSON](https://en.wikipedia.org/wiki/JSON) file and returns all data as a
-dictionary. In this dictionary, the value containing the customers should be
-a list of dictionaries (just like in the input file). Keep the input files'
-dictionary keys.
+## 3. Conversion between Celsius and Fahrenheit
+Based on the formulas and your code of the second homework, write a function
+`celsius2fahrenheit(.)` that converts from Celsius to Fahrenheit and
+`fahrenheit2celsius(.)` for the other way around.
+    
+Name the program file: `conversion.py`
 
-Name the module: `vrptw_reader.py` 
+## 4. Geometry functions
+Implement the following functions calculating the perimeters, areas, surfaces
+or volumes of common gemoetric shapes:
 
-## 2. Distance matrix (1 point)
-Write a function called `calc_distance_matrix(node_list)` that returns a matrix
-of euclidean distances between all given nodes. The first index to the matrix
-must refer to the row, the second to the column. All nodes' ids must correspond
-to the row/column relevant to that node. The expected argument is a list that
-contains all nodes as dictionaries (the depot and all customers). The function
-needs to assert that the lowest id is 0, that all ids are unique and that they
-are consecutive (0, 1, 2, ...). Feel free to write any number of additional
-functions (as you deem appropriate) to help you getting this task done.
-
-Add the function to the module: `vrptw_reader.py`
-
-## 3. Polar coordinates (1 points)
-Write a function called `calc_polar_coordinates(depot, node_list)` that
-returns a list with
-[polar coordinates](https://en.wikipedia.org/wiki/Polar_coordinate_system)
-of the depot and all nodes with respect to the depot. This first entry has to
-be the depot having the coordinates (0, 0) followed by all nodes in the same
-order as in the input list. For every list entry use the named tuple Node
-consisting of the node id and the polar coordinates saved as a named tuple
-`PolarCoordinate`.
-
-Now implement the function `order(p)` having as argument the output of the
-function `calc_polar_coordinates(.)` and returning a list of nodes ordered by
-the angle "phi".
-Again, feel free to write any number of additional functions. 
-
-Add the function to the module: `vrptw_reader.py`
-
-## 4. Simple VRP solver (5 points)
-Implement the counterclockwise sweep algorithm for the VRP. This algorithm
-considers the particular customers one after another ordered by their polar
-coordinates and
-- proceeds the route if neither the truck capacity nor the truck range is
-  exceeded and
-- begins a new route otherwise.
-     
-Each route starts and ends at the depot and is serviced by a single truck. Each
-customer must be on exactly one route. None of the trucks is allowed to exceed
-its capacity or range. The capacity and the customer's demands use the same
-units. The range uses the same distance units as the distance matrix.
-
-Represent a route as a simple list of customer dictionaries. Write a function
-`solve_vrp(.)` that takes a dictionary with all required data as returned by
-the function in the first task. `solve_vrp(.)` must return a list of routes
-(that is, a list of node lists (depot - customers - depot) where each node still is a dictionary).
-Pay extra attention to the source code documentation of this function (the
-code can only say what you do, not why you do it).
-
-Write an additional function `print_routes(.)` that takes a list of routes
-with customer dictionaries and prints the routes to `stdout`. The output
-format must be one route (truck) per line with all the customer ids on the
-route. The output should resemble the following 
 ```
-[0,  28,  12,  79,   3,  24,  80,   0]
-[0,  11,  19,  49,  48,   0]
+perimeter_right_triangle(c1, c2)
+area_right_triangle(c1, c2)
+perimeter_circle(r)
+area_circle(r)
+surface_sphere(r)
+volume_sphere(r)
+surface_cylinder(r, h)
+volume_cylinder(r, h)
+surface_cone(r, h)
+volume_cone(r, h)
+```
+Name the program file: `geometry.py`
+
+
+## 5. Business functions
+Implement a function `interest(capital, rate, years=1, tax=0)` that returns the
+profit (compound interest) of investing money. If a positive tax value is
+entered, every year's interest is to be reduced by the tax. The `rate` and
+`tax` parameters must be between 0 (0%) and 1 (100%). The number of years is
+integral. Using the above function, implement a second function that returns
+the terminal value of investing money: `terminal_value(capital, rate, years=1,
+tax=0)`.
+
+Name the program file: `business.py`
+    
+    
+## 5. ROT13
+Building on your solution to the ROT13 task in the last homework, write a
+function `encode(.)` that takes a string and returns the given string rotated
+by 13 places. For symmetry, also provide a corresponding `decode(.)` function.
+Convert the input to upper case before performing the rotation.
+```
+a. Arire gehfg n cebtenz lbh qba'g unir fbheprf sbe.
+```
+Name the program file: `rot13.py`
+
+    
+## 7. VRPTW instances
+Write a function `read_string_list(.)` that opens a VRPTW data file given as
+filename argument. The argument must be optional and default to "r101"). If the
+argument doesn't contain a filename extension (".txt"), this extension must be
+added before opening the file. Your function should return a list of strings -
+one for each entry. The headers should not be included in that list.
+A sample execution of this function:
+```
+>>> read_string_list('r101.txt')
+['    1      35.00      35.00       0.00       0.00     230.00       0.00\n',
+ '    2      41.00      49.00      10.00     161.00     171.00      10.00\n',
 ...
-```
-and end with a final newline. Use as many additional functions as you deem
-useful.
+ '  100      20.00      26.00       9.00      83.00      93.00      10.00\n',
+ '  101      18.00      18.00      17.00     185.00     195.00      10.00\n']
+```     
+Name the program file: `vrptw_reader.py`
 
-Name the program file: `vrp_solver.py`
+
+## 8. More on VRPTW instances
+Expand the file of the last task to include more functions. Implement a
+second function that
+`get_demand(.)` takes two arguments. The first argument should be a list of
+strings (one for each entry) and the second should be a customer number
+(CUST_NO.). The function has to return that customer's demand as floating
+point number.
+
+Finally, implement `calc_distance(.)`. This function should take three
+parameters – a list of strings and two customer numbers. It should return the
+euclidean distance between the two customers.
+
+Name the program file: `vrptw_reader.py`
+
+
+## 9. Main function
+Write a single module that imports all the other modules you wrote for this
+homework. In the module implement a main function that uses all the functions
+you created (except function `read_string_list(.)`). This main function is a
+first attempt of using your code from other modules. For each of the other
+tasks, create valid input data and deduce the function's output. Print these
+values, followed by the actual values the function produces for these inputs.
+Here's an example line this function could contain:
+```
+def main():
+    # ...
+    print('prime_addition.prime_sum_to(9); expected: 17, actual:',
+          prime_addition.prime_sum_to(9))
+    # ...
+```
+The main function must be called itself using the ifmain pattern. If all went
+well, the main function must return 0 to inform the calling process of the
+successful termination. 
+
+Name the program file: `main.py`

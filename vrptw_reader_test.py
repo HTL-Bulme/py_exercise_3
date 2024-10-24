@@ -1,58 +1,49 @@
-import doctest
+from math import hypot
 import unittest
 
-from . import FILENAME
+from pytest import approx
 
 import vrptw_reader
 
 
 class TestVRPTWReader(unittest.TestCase):
-    def setUp(self):
-        self.problem = vrptw_reader.read_json(FILENAME)
+    target = "vrptw_reader.py"
 
-    def test_read_json_depot(self):
-        self.assertIn("depot", self.problem.keys())
-        self.assertEqual(self.problem["depot"]["est"], 0.0)
-        self.assertEqual(self.problem["depot"]["lst"], 230.0)
-        self.assertEqual(self.problem["depot"]["id"], 0)
-        self.assertEqual(self.problem["depot"]["x"], 35.0)
-        self.assertEqual(self.problem["depot"]["y"], 35.0)
+    def test_read_string_list_default(self):
+        """Test default instance name."""
+        strings = vrptw_reader.read_string_list()
+        strings2 = vrptw_reader.read_string_list('r101')
+        self.assertEqual(strings, strings2)
 
-    def test_read_json_truck_capacity(self):
-        self.assertIn("truck_capacity", self.problem.keys())
-        self.assertEqual(self.problem["truck_capacity"], 85.0)
+    def test_read_string_list_extension(self):
+        """Test automatic addition of filename extension."""
+        strings = vrptw_reader.read_string_list('r102')
+        strings2 = vrptw_reader.read_string_list('r102.txt')
+        self.assertEqual(strings, strings2)
 
-    def test_read_json_truck_range(self):
-        self.assertIn("truck_range", self.problem.keys())
-        self.assertEqual(self.problem["truck_range"], 250.0)
+    def test_read_string_list(self):
+        """Test if the correct number of entries is read."""
+        strings = vrptw_reader.read_string_list()
+        self.assertEqual(len(strings), 101)
 
-    def test_read_json_clients(self):
-        self.assertIn("clients", self.problem.keys())
-        self.assertEqual(len(self.problem["clients"]), 25)
-        for c in self.problem["clients"]:
-            if not c["id"] == 17: continue
-            self.assertEqual(c["est"], 157.0)
-            self.assertEqual(c["lst"], 167.0)
-            self.assertEqual(c["id"], 17)
-            self.assertEqual(c["x"], 5.0)
-            self.assertEqual(c["y"], 30.0)
+    def test_read_string_list_count(self):
+        """Test if data is read correctly."""
+        n1 = '    1      35.00      35.00       0.00       0.00     230.00       0.00\n'
+        n7 = '    7      25.00      30.00       3.00      99.00     109.00      10.00\n'
+        n101 = '  101      18.00      18.00      17.00     185.00     195.00      10.00\n'
+        strings = vrptw_reader.read_string_list('r102')
+        self.assertEqual(strings[0], n1)
+        self.assertEqual(strings[6], n7)
+        self.assertEqual(strings[100], n101)
 
-    def test_docstring(self):
-        self.assertTrue(vrptw_reader.read_json.__doc__,
-                        'read_json does not have a docstring')
-        self.assertTrue(len(vrptw_reader.read_json.__doc__) > 50,
-                        'docstring of read_json is too short')
-        self.assertIn('>>>', vrptw_reader.read_json.__doc__,
-                      'missing doctests in read_json')
 
-    def test_module_docstring(self):
-        self.assertTrue(vrptw_reader.__doc__, "docstring is missing")
-        self.assertTrue(len(vrptw_reader.__doc__) > 20, "docstring is too short")
+def test_get_demand(self):
+    strings = vrptw_reader.read_string_list('r101')
+    assert vrptw_reader.get_demand(strings, 1) == 0.0
+    assert vrptw_reader.get_demand(strings, 9) == 9.0
+    assert vrptw_reader.get_demand(strings, 101) == 17.0
 
-    def test_doctests(self):
-        """Ensure doctests are present and pass."""
-        r = doctest.testmod(vrptw_reader)
-        self.assertTrue(r.attempted,
-                        f'vrptw_reader.py does not have a doctest')
-        self.assertFalse(r.failed,
-                         f'vrptw_reader.py contains failing doctests')
+def test_calc_distance(self):
+    assert vrptw_reader.calc_distance(self.strings, 1, 3) == approx(18.0)
+    actual = vrptw_reader.calc_distance(self.strings, 1, 17)
+    assert actual == approx(hypot(25, 15))
