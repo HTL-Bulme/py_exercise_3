@@ -37,13 +37,14 @@ class TestVRPTWReader(unittest.TestCase):
         self.assertEqual(strings[100], n101)
 
 
-def test_get_demand(self):
+def test_get_demand():
     strings = vrptw_reader.read_string_list('r101')
     assert vrptw_reader.get_demand(strings, 1) == 0.0
     assert vrptw_reader.get_demand(strings, 9) == 9.0
     assert vrptw_reader.get_demand(strings, 101) == 17.0
 
-def test_calc_distance(self):
-    assert vrptw_reader.calc_distance(self.strings, 1, 3) == approx(18.0)
-    actual = vrptw_reader.calc_distance(self.strings, 1, 17)
+def test_calc_distance():
+    strings = vrptw_reader.read_string_list('r101')
+    assert vrptw_reader.calc_distance(strings, 1, 3) == approx(18.0)
+    actual = vrptw_reader.calc_distance(strings, 1, 17)
     assert actual == approx(hypot(25, 15))

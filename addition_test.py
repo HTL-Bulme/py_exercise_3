@@ -12,7 +12,7 @@ class TestAddition(unittest.TestCase):
     def test_regular(self):
         self.assertEqual(addition.sum_to(10), 55)
         self.assertEqual(addition.sum_to(25), 325)
-        self.assertEqual(addition.sum_to(30), 129)
+        self.assertEqual(addition.sum_to(26), 351)
 
     def test_illegal(self):
         self.assertRaises(AssertionError, addition.sum_to, -1)
@@ -20,4 +20,4 @@ class TestAddition(unittest.TestCase):
 
 def test_sum_to_slow():
     """Depending on your implementation, this test may take a while."""
-    assert add_to(500000000) == 125000000250000000
+    assert addition.sum_to(500000000) == 125000000250000000
