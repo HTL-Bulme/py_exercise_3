@@ -1,7 +1,67 @@
 {
   "tests": [
     {
-      "name": "vrptw reader",
+      "name": "quadratic equations",
+      "setup": "sudo apt install python3-pytest python3-numpy",
+      "run": "python -m pytest -k equations_test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "addition",
+      "setup": "sudo apt install python3-pytest python3-numpy",
+      "run": "python -m pytest -k addition_test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "conversion between Celsius and Fahrenheit",
+      "setup": "sudo apt install python3-pytest python3-numpy",
+      "run": "python -m pytest -k conversion_test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "geometry function",
+      "setup": "sudo apt install python3-pytest python3-numpy",
+      "run": "python -m pytest -k geometry_test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "business functions",
+      "setup": "sudo apt install python3-pytest python3-numpy",
+      "run": "python -m pytest -k business_test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "rot13",
+      "setup": "sudo apt install python3-pytest python3-numpy",
+      "run": "python -m pytest -k rot13_test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "vrptw instances",
       "setup": "sudo apt install python3-pytest python3-numpy",
       "run": "python -m pytest -k vrptw_reader_test",
       "input": "",
@@ -11,34 +71,14 @@
       "points": 2
     },
     {
-      "name": "distance matrix",
+      "name": "main",
       "setup": "sudo apt install python3-pytest python3-numpy",
-      "run": "python -m pytest -k distance_matrix_test",
+      "run": "python -m pytest -k main_test",
       "input": "",
       "output": "",
       "comparison": "included",
       "timeout": 10,
       "points": 1
-    },
-    {
-      "name": "polar coordinates",
-      "setup": "sudo apt install python3-pytest python3-numpy",
-      "run": "python -m pytest -k polar_coordinates_test",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 1
-    },
-    {
-      "name": "vrp solver",
-      "setup": "sudo apt install python3-pytest python3-numpy",
-      "run": "python -m pytest -k vrp_solver_test",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 5
     }
   ]
 }

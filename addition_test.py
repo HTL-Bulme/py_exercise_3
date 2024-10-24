@@ -18,5 +18,6 @@ class TestAddition(unittest.TestCase):
         self.assertRaises(AssertionError, addition.sum_to, -1)
         self.assertRaises(AssertionError, addition.sum_to, -17)
 
-def test_add_to_slow():
-    assert add_to(4294967295) == 9223372034707292160
+def test_sum_to_slow():
+    """Depending on your implementation, this test may take a while."""
+    assert add_to(500000000) == 125000000250000000
