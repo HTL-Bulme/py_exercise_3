@@ -11,10 +11,12 @@ Start each of your files by adding a shebang in the first line.
 Right after the shebang, each of your files must contain each contributing
 student's name using the following template
 
+```py
 """
 .. moduleauthor:: First Student Name <your.name@example.com>
 .. moduleauthor:: Second Student Name <other.name@example.com>
 """
+```
 
 We did not discuss every detail required to solve the following tasks.
 Use your favorite search engine and some common sense to solve the tasks.
