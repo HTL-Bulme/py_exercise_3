@@ -89,7 +89,7 @@ Name the program file: `business.py`
 Building on your solution to the ROT13 task in the last homework, write a
 function `encode(.)` that takes a string and returns the given string rotated
 by 13 places. For symmetry, also provide a corresponding `decode(.)` function.
-Convert the input to upper case before performing the rotation.
+Make sure to properly preserve upper and lower case.
 ```
 a. Arire gehfg n cebtenz lbh qba'g unir fbheprf sbe.
 ```
