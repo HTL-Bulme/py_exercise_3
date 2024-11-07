@@ -3,7 +3,7 @@
     {
       "name": "quadratic equations",
       "setup": "sudo apt install python3-pytest python3-numpy",
-      "run": "python -m pytest -k equations_test",
+      "run": "python -m pytest equations_test.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -13,7 +13,7 @@
     {
       "name": "addition",
       "setup": "sudo apt install python3-pytest python3-numpy",
-      "run": "python -m pytest -k addition_test",
+      "run": "python -m pytest addition_test.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -23,7 +23,7 @@
     {
       "name": "conversion between Celsius and Fahrenheit",
       "setup": "sudo apt install python3-pytest python3-numpy",
-      "run": "python -m pytest -k conversion_test",
+      "run": "python -m pytest conversion_test.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -33,7 +33,7 @@
     {
       "name": "geometry function",
       "setup": "sudo apt install python3-pytest python3-numpy",
-      "run": "python -m pytest -k geometry_test",
+      "run": "python -m pytest geometry_test.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -43,7 +43,7 @@
     {
       "name": "business functions",
       "setup": "sudo apt install python3-pytest python3-numpy",
-      "run": "python -m pytest -k business_test",
+      "run": "python -m pytest business_test.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -53,7 +53,7 @@
     {
       "name": "rot13",
       "setup": "sudo apt install python3-pytest python3-numpy",
-      "run": "python -m pytest -k rot13_test",
+      "run": "python -m pytest rot13_test.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -63,7 +63,7 @@
     {
       "name": "vrptw instances",
       "setup": "sudo apt install python3-pytest python3-numpy",
-      "run": "python -m pytest -k vrptw_reader_test",
+      "run": "python -m pytest vrptw_reader_test.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -73,7 +73,7 @@
     {
       "name": "main",
       "setup": "sudo apt install python3-pytest python3-numpy",
-      "run": "python -m pytest -k main_test",
+      "run": "python -m pytest main_test.py",
       "input": "",
       "output": "",
       "comparison": "included",
