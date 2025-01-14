@@ -23,18 +23,23 @@ Use your favorite search engine and some common sense to solve the tasks.
 
 You may run the grader locally upfront via
 
-```
+```shell
 python -m pytest [--help]
 ```
 
 If desired, the "old style" grader can also be accessed via
 
-```
+```shell
 python exercise_3.py [--help]
 ```
 
 ## 1. Equation solver
 Write a function `quadratic(a, b, c)` that solves quadratic equations.
+
+$$
+x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+
 If you have trouble solving this task, have a look at the
 [Python functions video tutorial](http://www.youtube.com/watch?v=TFcUGSBTA78)
 on youtube. In addition to what is shown in the video, the function must be
