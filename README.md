@@ -92,7 +92,7 @@ tax=0)`.
 Name the program file: `business.py`
     
     
-## 5. ROT13
+## 6. ROT13
 Building on your solution to the ROT13 task in the last homework, write a
 function `encode(.)` that takes a string and returns the given string rotated
 by 13 places. For symmetry, also provide a corresponding `decode(.)` function.
